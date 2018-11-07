@@ -3,12 +3,13 @@ import { createStackNavigator, createBottomTabNavigator , createMaterialTopTabNa
 
 import TabBarIcon from '../components/TabBarIcon';
 import TabBarElement  from '../components/TabBarElement';
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import McScreen from '../screens/McScreen';
+import KFCScreen from '../screens/KFCScreen';
+import BKScreen from '../screens/BKScreen';
+import OthersScreen from '../screens/OthersScreen';
 
 const mcTab = createStackNavigator({
-  Home: HomeScreen,
+  MCTab: McScreen,
 });
 
 mcTab.navigationOptions = {
@@ -22,7 +23,7 @@ mcTab.navigationOptions = {
 };
 
 const kfcTab = createStackNavigator({
-  Links: LinksScreen,
+  KFCTab: KFCScreen,
 });
 
 kfcTab.navigationOptions = {
@@ -36,7 +37,7 @@ kfcTab.navigationOptions = {
 };
 
 const bkTab = createStackNavigator({
-  Settings: SettingsScreen,
+  BKTab: BKScreen,
 });
 
 bkTab.navigationOptions = {
@@ -50,7 +51,7 @@ bkTab.navigationOptions = {
 };
 
 const otherTab = createStackNavigator({
-  Settings: SettingsScreen,
+  OtherTab: OthersScreen,
 });
 
 otherTab.navigationOptions = {
