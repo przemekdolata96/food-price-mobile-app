@@ -5,6 +5,8 @@ import {
   View,
 } from 'react-native';
 import ProductList from '../components/ProductList';
+import ProductDetail from '../components/ProductDetail';
+import { selectProduct, deselectProduct} from '../store/actions/index';
 import { connect } from 'react-redux';
 
 class KFCScreen extends React.Component {
@@ -12,13 +14,21 @@ class KFCScreen extends React.Component {
     title: 'KFC',
   };
 
+  productSelectedHandler = key => {
+    this.props.onSelectProduct(key, 'kfc');
+  }
+
+  modalClosedHandler = () => {
+    this.props.onDeselectProduct();
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <ProductList
             products={this.props.products}
-            onItemSelected={() => {}}
+            onItemSelected={this.productSelectedHandler}
           />
         </ScrollView>
       </View>
@@ -28,20 +38,22 @@ class KFCScreen extends React.Component {
 
 const mapStateToProps = state => {
   return {
-   products: state.products.products.kfc,
+    products: state.products.products.kfc,
+    selectedProduct: state.products.selectedProduct
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-   
+    onSelectProduct: (key, restaurantName) => dispatch(selectProduct(key, restaurantName)),
+    onDeselectProduct: () => dispatch(deselectProduct())
   };
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#EEEEEE',
   },
   contentContainer: {
     paddingTop: 30,

@@ -1,24 +1,23 @@
 import React from 'react'
 import { Modal, View, Image, Text, Button, StyleSheet } from 'react-native';
 
-const placeDetail = props => {
+const productDetail = props => {
   let modalContent = null;
 
-  if(props.selectedPlace) {
+  if (props.selectedProduct) {
     modalContent = (
       <View>
-        <Image source={props.selectedPlace.image} style={styles.placeImage} />
-        <Text style={styles.placeName}>{props.selectedPlace.name}</Text>
+        <Image source={props.selectedProduct.image} style={styles.productImage} />
+        <Text style={styles.productName}>{props.selectedProduct.name}</Text>
       </View>
     );
   };
 
   return (
-    <Modal onRequestClose={props.onModalClosed} visible={props.selectedPlace !== null} animationType="slide">
+    <Modal onRequestClose={props.onModalClosed} visible={props.selectedProduct !== null} animationType="slide">
       <View style={styles.modalContainer}>
         {modalContent}
         <View>
-          <Button title="Delete" color="red" onPress={props.onItemDeleted} />
           <Button title="Close" onPress={props.onModalClosed} />
         </View>
       </View>
@@ -30,15 +29,15 @@ const styles = StyleSheet.create({
   modalContainer: {
     margin: 22
   },
-  placeImage: {
+  productImage: {
     width: '100%',
     height: 200
   },
-  placeName: {
+  productName: {
     fontWeight: 'bold',
     textAlign: 'center',
     fontSize: 28
   }
 });
 
-export default placeDetail;
+export default productDetail;

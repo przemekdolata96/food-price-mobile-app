@@ -55,7 +55,7 @@ const otherTab = createStackNavigator({
 });
 
 otherTab.navigationOptions = {
-  tabBarLabel: 'Other',
+  tabBarLabel: 'Pozostałe',
   tabBarIcon: ({ focused }) => (
       <TabBarElement
         image='https://mbtskoudsalg.com/images/fast-food-worker-stock-png-8.png'
@@ -81,11 +81,11 @@ export default createMaterialTopTabNavigator({
     },
     style: {
       backgroundColor: 'white',
-      borderTopWidth: 0.5,
-      borderColor: '#CCC'
+      borderTopWidth: 1,
+      borderColor: '#E0E0E0'
     },
     indicatorStyle: {
-      backgroundColor: 'blue'
+      backgroundColor: '#8BC34A'
     }
   }
 });

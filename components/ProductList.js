@@ -8,6 +8,7 @@ const productList = props => {
     <FlatList 
       style={styles.listContainer}
       data={props.products}
+      numColumns={2}
       renderItem={(info) => (
         <Product
             onItemPressed={() => props.onItemSelected(info.item.key)}
@@ -22,7 +23,7 @@ const productList = props => {
 
 const styles = StyleSheet.create({
   listContainer: {
-    width: '100%'
-  }
+    flex: 1,
+  },
 });
 export default productList;

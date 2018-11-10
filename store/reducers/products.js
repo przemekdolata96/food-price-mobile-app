@@ -7,7 +7,7 @@ const initialState = {
         name: 'Cheesburger',
         price: '4.00',
         image: {
-          uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/220px-McDonald%27s_Golden_Arches.svg.png'
+          uri: 'https://mcdonalds.pl/images/products-og/cheeseburger.png'
         }
       },
       {
@@ -15,7 +15,7 @@ const initialState = {
         name: 'Hamburger',
         price: '3.50',
         image: {
-          uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/220px-McDonald%27s_Golden_Arches.svg.png'
+          uri: 'https://mcdonalds.pl/images/products-og/hamburger.png'
         }
       },
       {
@@ -23,7 +23,7 @@ const initialState = {
         name: 'Chips',
         price: '5.00',
         image: {
-          uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/220px-McDonald%27s_Golden_Arches.svg.png'
+          uri: 'https://mcdonalds.pl/images/products-og/frytki.png'
         }
       },
     ],
@@ -77,31 +77,83 @@ const initialState = {
         }
       },
     ],
-    others: [{
-        key: `${Math.random()}`,
-        name: 'Whooper',
-        price: '4.00',
-        image: {
-          uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/220px-McDonald%27s_Golden_Arches.svg.png'
-        }
-      },
-      {
-        key: `${Math.random()}`,
-        name: 'Whooper Junior',
-        price: '3.50',
-        image: {
-          uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/220px-McDonald%27s_Golden_Arches.svg.png'
-        }
-      },
-      {
-        key: `${Math.random()}`,
-        name: 'Chips',
-        price: '6.00',
-        image: {
-          uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/220px-McDonald%27s_Golden_Arches.svg.png'
-        }
-      },
-    ],
+    others: {
+      'Pasibus': [{
+          key: `${Math.random()}`,
+          name: 'Klasyk',
+          price: '4.00',
+          image: {
+            uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/220px-McDonald%27s_Golden_Arches.svg.png'
+          }
+        },
+        {
+          key: `${Math.random()}`,
+          name: 'Whooper Junior',
+          price: '3.50',
+          image: {
+            uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/220px-McDonald%27s_Golden_Arches.svg.png'
+          }
+        },
+        {
+          key: `${Math.random()}`,
+          name: 'Chips',
+          price: '6.00',
+          image: {
+            uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/220px-McDonald%27s_Golden_Arches.svg.png'
+          }
+        },
+      ],
+      'Sevi kebab': [{
+          key: `${Math.random()}`,
+          name: 'Doner kebab',
+          price: '4.00',
+          image: {
+            uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/220px-McDonald%27s_Golden_Arches.svg.png'
+          }
+        },
+        {
+          key: `${Math.random()}`,
+          name: 'Whooper Junior',
+          price: '3.50',
+          image: {
+            uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/220px-McDonald%27s_Golden_Arches.svg.png'
+          }
+        },
+        {
+          key: `${Math.random()}`,
+          name: 'Chips',
+          price: '6.00',
+          image: {
+            uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/220px-McDonald%27s_Golden_Arches.svg.png'
+          }
+        },
+      ],
+      'Kebab King': [{
+          key: `${Math.random()}`,
+          name: 'Falafel',
+          price: '4.00',
+          image: {
+            uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/220px-McDonald%27s_Golden_Arches.svg.png'
+          }
+        },
+        {
+          key: `${Math.random()}`,
+          name: 'Whooper Junior',
+          price: '3.50',
+          image: {
+            uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/220px-McDonald%27s_Golden_Arches.svg.png'
+          }
+        },
+        {
+          key: `${Math.random()}`,
+          name: 'Chips',
+          price: '6.00',
+          image: {
+            uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/220px-McDonald%27s_Golden_Arches.svg.png'
+          }
+        },
+      ],
+    }
   },
   selectedProduct: null
 };
@@ -111,7 +163,9 @@ const reducer = (state = initialState, action) => {
     case SELECT_PRODUCT: 
       return {
         ...state,
-        selectedProduct: state.products.find(product => {
+        selectedProduct: action.isOther ? state.products.others[action.restaurantName].find(product => {
+          return product.key === action.productKey;
+        }) : state.products[action.restaurantName].find(product => {
           return product.key === action.productKey;
         })
       };
