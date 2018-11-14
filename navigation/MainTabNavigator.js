@@ -85,7 +85,7 @@ export default createMaterialTopTabNavigator({
       borderColor: '#E0E0E0'
     },
     indicatorStyle: {
-      backgroundColor: '#8BC34A'
+      backgroundColor: '#D32F2F'
     }
   }
 });
